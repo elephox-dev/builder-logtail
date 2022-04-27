@@ -1,0 +1,22 @@
+{
+    "name": "elephox/builder-logtail",
+    "description": "Elephox Web Application Builder extension for Logtail",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Ricardo Boss",
+            "email": "contact@ricardoboss.de"
+        }
+    ],
+    "require": {
+        "elephox/web": "^0.4",
+        "elephox/builder-request-logging": "dev-main"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Elephox\\Builder\\Logtail\\": "src/"
+        }
+    }
+}
