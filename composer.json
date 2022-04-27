@@ -10,10 +10,12 @@
         }
     ],
     "require": {
+        "ext-curl": "*",
         "elephox/web": "^0.4",
         "elephox/builder-request-logging": "dev-main"
     },
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Elephox\\Builder\\Logtail\\": "src/"
