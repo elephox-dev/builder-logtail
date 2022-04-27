@@ -10,6 +10,7 @@
         }
     ],
     "require": {
+        "php": "^8.1 <8.3",
         "ext-curl": "*",
         "elephox/web": "^0.4",
         "elephox/builder-request-logging": "dev-main"
@@ -20,5 +21,8 @@
         "psr-4": {
             "Elephox\\Builder\\Logtail\\": "src/"
         }
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.8"
     }
 }
