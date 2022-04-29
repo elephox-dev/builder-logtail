@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "32f7eacb61f86ba466ecc9bc5fcbf76c",
+    "content-hash": "f4359fd360be78b1ab80aa2d64f58ed8",
     "packages": [
         {
             "name": "elephox/autoloading",
@@ -61,16 +61,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/builder-request-logging.git",
-                "reference": "feb2b8b963c41a8a25ee8a278e2eca533e927b98"
+                "reference": "57547a483df8905244902948a313bcd938ba83e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/builder-request-logging/zipball/feb2b8b963c41a8a25ee8a278e2eca533e927b98",
-                "reference": "feb2b8b963c41a8a25ee8a278e2eca533e927b98",
+                "url": "https://api.github.com/repos/elephox-dev/builder-request-logging/zipball/57547a483df8905244902948a313bcd938ba83e8",
+                "reference": "57547a483df8905244902948a313bcd938ba83e8",
                 "shasum": ""
             },
             "require": {
-                "elephox/web": "dev-develop"
+                "elephox/web": "dev-develop",
+                "php": "^8.1 <8.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "dev-master"
             },
             "default-branch": true,
             "type": "library",
@@ -94,7 +98,7 @@
                 "issues": "https://github.com/elephox-dev/builder-request-logging/issues",
                 "source": "https://github.com/elephox-dev/builder-request-logging/tree/develop"
             },
-            "time": "2022-04-29T07:46:59+00:00"
+            "time": "2022-04-29T08:06:33+00:00"
         },
         {
             "name": "elephox/collection",
@@ -1788,16 +1792,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.8.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "cbad1115aac4b5c3c5540e7210d3c9fba2f81fa3"
+                "reference": "aa805a8a4d8384c71a1367fceb57a081a4d969e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/cbad1115aac4b5c3c5540e7210d3c9fba2f81fa3",
-                "reference": "cbad1115aac4b5c3c5540e7210d3c9fba2f81fa3",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/aa805a8a4d8384c71a1367fceb57a081a4d969e4",
+                "reference": "aa805a8a4d8384c71a1367fceb57a081a4d969e4",
                 "shasum": ""
             },
             "require": {
@@ -1839,6 +1843,7 @@
                 "ext-dom": "For handling output formats in XML",
                 "ext-mbstring": "For handling non-UTF8 characters."
             },
+            "default-branch": true,
             "bin": [
                 "php-cs-fixer"
             ],
@@ -1865,7 +1870,7 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues",
-                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/v3.8.0"
+                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/master"
             },
             "funding": [
                 {
@@ -1873,7 +1878,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-03-18T17:20:59+00:00"
+            "time": "2022-03-18T17:29:23+00:00"
         },
         {
             "name": "php-cs-fixer/diff",
@@ -3018,8 +3023,9 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "elephox/builder-request-logging": 20,
         "elephox/web": 20,
-        "elephox/builder-request-logging": 20
+        "friendsofphp/php-cs-fixer": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
