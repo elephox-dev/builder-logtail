@@ -17,7 +17,6 @@
       <path value="$PROJECT_DIR$/vendor/elephox/web" />
       <path value="$PROJECT_DIR$/vendor/elephox/files" />
       <path value="$PROJECT_DIR$/vendor/elephox/builder-request-logging" />
-      <path value="$PROJECT_DIR$/vendor/elephox/platform" />
       <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
       <path value="$PROJECT_DIR$/vendor/elephox/http" />
       <path value="$PROJECT_DIR$/vendor/elephox/mimey" />
@@ -52,7 +51,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
       <path value="$PROJECT_DIR$/vendor/psr/cache" />
       <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
-      <path value="$PROJECT_DIR$/vendor/php-cs-fixer/diff" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1">

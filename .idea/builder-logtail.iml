@@ -13,7 +13,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/elephox/web" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/elephox/files" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/elephox/builder-request-logging" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/elephox/platform" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/elephox/http" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/elephox/mimey" />
@@ -48,7 +47,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/lexer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/cache" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/event-dispatcher" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/php-cs-fixer/diff" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/diff" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
