@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f4359fd360be78b1ab80aa2d64f58ed8",
+    "content-hash": "7222d219eb4a02d2b57610aac386feee",
     "packages": [
         {
             "name": "elephox/autoloading",
@@ -54,26 +54,25 @@
         },
         {
             "name": "elephox/builder-request-logging",
-            "version": "dev-develop",
+            "version": "v0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/builder-request-logging.git",
-                "reference": "57547a483df8905244902948a313bcd938ba83e8"
+                "reference": "6e84367b82b74d34339c443317e18bd0dfa0dd94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/builder-request-logging/zipball/57547a483df8905244902948a313bcd938ba83e8",
-                "reference": "57547a483df8905244902948a313bcd938ba83e8",
+                "url": "https://api.github.com/repos/elephox-dev/builder-request-logging/zipball/6e84367b82b74d34339c443317e18bd0dfa0dd94",
+                "reference": "6e84367b82b74d34339c443317e18bd0dfa0dd94",
                 "shasum": ""
             },
             "require": {
-                "elephox/web": "dev-develop",
+                "elephox/web": "^0.6|^0.7",
                 "php": "^8.1 <8.3"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "dev-master"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -93,9 +92,9 @@
             "description": "Elephox Web Application Builder extension for the request logging middleware",
             "support": {
                 "issues": "https://github.com/elephox-dev/builder-request-logging/issues",
-                "source": "https://github.com/elephox-dev/builder-request-logging/tree/develop"
+                "source": "https://github.com/elephox-dev/builder-request-logging/tree/v0.2.0"
             },
-            "time": "2022-04-29T08:06:33+00:00"
+            "time": "2022-10-21T22:32:28+00:00"
         },
         {
             "name": "elephox/collection",
@@ -617,16 +616,16 @@
         },
         {
             "name": "elephox/web",
-            "version": "dev-develop",
+            "version": "v0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/elephox-dev/web.git",
-                "reference": "1bbd58fbadffc710ade974f6e824a292fda984ed"
+                "reference": "01d79624d2273f529feeed0b13a3dfd05b268673"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elephox-dev/web/zipball/1bbd58fbadffc710ade974f6e824a292fda984ed",
-                "reference": "1bbd58fbadffc710ade974f6e824a292fda984ed",
+                "url": "https://api.github.com/repos/elephox-dev/web/zipball/01d79624d2273f529feeed0b13a3dfd05b268673",
+                "reference": "01d79624d2273f529feeed0b13a3dfd05b268673",
                 "shasum": ""
             },
             "require": {
@@ -637,7 +636,6 @@
                 "elephox/di": "dev-develop",
                 "elephox/files": "dev-develop",
                 "elephox/http": "dev-develop",
-                "elephox/mimey": "^4.0",
                 "elephox/oor": "dev-develop",
                 "elephox/support": "dev-develop",
                 "ext-mbstring": "*",
@@ -645,7 +643,6 @@
                 "php": "^8.1 <8.3",
                 "symfony/process": "^6.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -667,7 +664,7 @@
                 "issues": "https://github.com/elephox-dev/framework/issues",
                 "source": "https://github.com/elephox-dev/framework"
             },
-            "time": "2022-10-21T14:38:40+00:00"
+            "time": "2022-07-02T22:54:34+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -3008,8 +3005,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "elephox/builder-request-logging": 20,
-        "elephox/web": 20,
         "friendsofphp/php-cs-fixer": 20
     },
     "prefer-stable": true,
