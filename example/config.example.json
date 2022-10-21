@@ -1,0 +1,7 @@
+{
+  "logtail": {
+    "token": "",
+    "endpoint": "",
+    "bufferLimit": 0
+  }
+}
