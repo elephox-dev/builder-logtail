@@ -20,7 +20,7 @@ trait AddsLogtail
 
 	public function addLogtail(): void
 	{
-		$this->getServices()->addSingleton(LogtailConfiguration::class, implementationFactory: static function (Configuration $config) {
+		$this->getServices()->addSingleton(LogtailConfiguration::class, factory: static function (Configuration $config) {
 			/** @var scalar|null $token */
 			$token = $config['logtail:token'] ?? null;
 			if (!is_string($token)) {

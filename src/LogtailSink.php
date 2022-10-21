@@ -5,6 +5,7 @@ namespace Elephox\Builder\Logtail;
 
 use Elephox\Logging\Contract\LogLevel;
 use Elephox\Logging\Contract\Sink;
+use Elephox\Logging\SinkCapability;
 use JsonException;
 
 class LogtailSink implements Sink
@@ -33,6 +34,10 @@ class LogtailSink implements Sink
 			$data['context'] = $context;
 		}
 
-		$this->client->send(json_encode($data, JSON_THROW_ON_ERROR));
+		$this->client->send($data);
+	}
+
+	public function hasCapability(SinkCapability $capability): bool {
+		return false;
 	}
 }

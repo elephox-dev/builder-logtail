@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace Elephox\Builder\Logtail;
 
+use JsonException;
 use LogicException;
 use CurlHandle;
 use RuntimeException;
 use function curl_init;
 use function curl_setopt;
-use function extension_loaded;
 
 /**
  * Format JSON records for Logtail
@@ -31,27 +31,10 @@ class LogtailClient
 		CURLE_SSL_CONNECT_ERROR,
 	];
 
-	private CurlHandle|false $handle = false;
+	private ?CurlHandle $handle = null;
 
 	public function __construct(private readonly LogtailConfiguration $configuration)
 	{
-	}
-
-	private function getHandle(): CurlHandle
-	{
-		if ($this->handle === false) {
-			$this->handle = $this->initCurlHandle();
-		}
-
-		return $this->handle;
-	}
-
-	public function send(mixed $data): void
-	{
-		curl_setopt($this->getHandle(), CURLOPT_POSTFIELDS, $data);
-		curl_setopt($this->getHandle(), CURLOPT_RETURNTRANSFER, true);
-
-		$this->tryExecute($this->getHandle());
 	}
 
 	private function initCurlHandle(): CurlHandle
@@ -73,9 +56,30 @@ class LogtailClient
 		return $handle;
 	}
 
-	private function tryExecute(CurlHandle $ch): void
+	private function getHandle(): CurlHandle
 	{
+		if ($this->handle === null) {
+			$this->handle = $this->initCurlHandle();
+		}
+
+		return $this->handle;
+	}
+
+	/**
+	 * @throws JsonException
+	 */
+	public function send(array $data): void
+	{
+		$ch = $this->getHandle();
 		$retries = 5;
+
+		$encoded = json_encode($data, JSON_THROW_ON_ERROR);
+
+		assert(is_string($encoded));
+
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $encoded);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
 		while ($retries--) {
 			$curlResponse = curl_exec($ch);
 			if ($curlResponse !== false) {
