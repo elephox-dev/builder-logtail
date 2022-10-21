@@ -6,7 +6,7 @@ namespace Elephox\Builder\Logtail;
 use Elephox\Builder\RequestLogging\LoggingMiddleware;
 use Elephox\Configuration\Contract\Configuration;
 use Elephox\DI\Contract\ServiceCollection;
-use Elephox\Logging\Contract\Sink;
+use Elephox\Logging\MultiSinkLogger;
 use Elephox\Logging\SingleSinkLogger;
 use Elephox\Web\ConfigurationException;
 use Elephox\Web\RequestPipelineBuilder;
@@ -18,9 +18,10 @@ trait AddsLogtail
 
 	abstract protected function getPipeline(): RequestPipelineBuilder;
 
-	public function addLogtail(): void
+	public function addLogtail(bool $buffered = true): void
 	{
-		$this->getServices()->addSingleton(LogtailConfiguration::class, factory: static function (Configuration $config) {
+		$services = $this->getServices();
+		$services->addSingleton(LogtailConfiguration::class, factory: static function (Configuration $config) {
 			/** @var scalar|null $token */
 			$token = $config['logtail:token'] ?? null;
 			if (!is_string($token)) {
@@ -32,16 +33,32 @@ trait AddsLogtail
 				throw new ConfigurationException('Logtail configuration error: "logtail:endpoint" must be a string.');
 			}
 
-			return new LogtailConfiguration($token, $endpoint);
-		});
-		$this->getServices()->addSingleton(LogtailClient::class);
-		$this->getServices()->addSingleton(Sink::class, LogtailSink::class, replace: true);
-		$this->getServices()->addSingleton(LoggerInterface::class, SingleSinkLogger::class, replace: true);
+			$bufferedLimitStr = (string)($config['logtail:bufferedLimit'] ?? LogtailConfiguration::DEFAULT_BUFFERED_LIMIT);
+			if (!ctype_digit($bufferedLimitStr)) {
+				throw new ConfigurationException('Logtail configuration error: "logtail:bufferedLimit" must be a string consisting of digits.');
+			}
 
-		if ($this->getServices()->has(LoggingMiddleware::class)) {
-			$middleware = $this->getServices()->requireService(LoggingMiddleware::class);
+			return new LogtailConfiguration($token, $endpoint, (int)$bufferedLimitStr);
+		});
+
+		$services->addSingleton(LogtailClient::class, match ($buffered) {
+			true => BufferedLogtailClient::class,
+			false => ImmediateLogtailClient::class,
+		});
+
+		$logger = $services->getService(LoggerInterface::class);
+		$logtailSink = $services->resolver()->instantiate(LogtailSink::class);
+		if ($logger instanceof MultiSinkLogger) {
+			// add sink to multi-sink
+			$logger->addSink($logtailSink);
 		} else {
-			$middleware = $this->getServices()->resolver()->instantiate(LoggingMiddleware::class);
+			// replace/add sink and logger
+			$services->addSingleton(LoggerInterface::class, SingleSinkLogger::class, factory: fn () => new SingleSinkLogger($logtailSink), replace: true);
+		}
+
+		$middleware = $services->getService(LoggingMiddleware::class);
+		if ($middleware === null) {
+			$middleware = $services->resolver()->instantiate(LoggingMiddleware::class);
 		}
 
 		$this->getPipeline()->push($middleware);

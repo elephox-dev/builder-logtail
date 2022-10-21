@@ -34,7 +34,7 @@ class LogtailSink implements Sink
 			$data['context'] = $context;
 		}
 
-		$this->client->send($data);
+		$this->client->submit($data);
 	}
 
 	public function hasCapability(SinkCapability $capability): bool {
